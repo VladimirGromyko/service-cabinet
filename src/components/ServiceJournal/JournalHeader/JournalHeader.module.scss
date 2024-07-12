@@ -1,0 +1,31 @@
+.headerWrapper {
+  font-size: 24px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background: #d8d8d8;
+  .infoRow {
+    display: flex;
+    gap: 80px;
+    cursor: pointer;
+    .vercelLogo{
+
+    }
+  }
+
+  .infoItem {
+
+  }
+}
+
+
+
+.infoRow {
+  display: flex;
+  gap: 80px;
+  cursor: pointer;
+}
+
+.infoItem {
+
+}

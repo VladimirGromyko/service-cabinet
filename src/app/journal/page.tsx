@@ -1,11 +1,20 @@
 'use client'
-import s from './Journal.module.scss'
-import Image from "next/image";
-import {useRouter} from "next/navigation";
+import s from './JournalPage.module.scss'
+
+import {JournalHeader} from "@/components/ServiceJournal/JournalHeader/JournalHeader";
+import {Search} from "@/components/ServiceJournal/Search/Search";
+
+import {JournalTable} from "@/components/ServiceJournal/Table/Table";
+import {useState} from "react";
+import {SearchGroup} from "@/components/ServiceJournal/serviceJournal.types";
+
 export default function Journal() {
-    const {push} = useRouter()
-    return (<div className={s.journal}>
-        <div>Journal</div>
-        <Image src='/next.svg' alt='' width={200} height={50}/>
-    </div>)
+    const [searchValue, setSearchValue] = useState<SearchGroup>({field: null, value: ''})
+    return (
+        <div className={s.journalWrapper}>
+            <JournalHeader/>
+            <Search handleSearch={(value) => setSearchValue(value)}/>
+            <JournalTable searchValue={searchValue}/>
+        </div>
+    )
 }

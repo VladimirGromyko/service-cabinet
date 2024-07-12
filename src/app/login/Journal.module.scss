@@ -1,0 +1,32 @@
+.journalWrapper {
+  font-size: 30px;
+  background: #ffffff80;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  overflow: auto;
+
+  .first-header {
+    background: #d8d8d8;
+    display: inline;
+    text-align: center;
+    //min-width: 400px;
+    width: 265px;
+  }
+
+  .body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-width: 400px;
+  //  position: absolute;
+  //  top: 50%;
+  //  left: 50%
+  }
+}
