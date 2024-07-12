@@ -15,6 +15,7 @@ const initButton = {
     close: "",
     await: ""
 }
+const currentButtonSize = {width: 130, height: 37}
 export const Search = ({handleSearch}: Props) => {
     const [searchValue, setSearchValue] = useState('')
     const [searchButton, setSearchButton] = useState({...initButton, all: "primary"})
@@ -24,18 +25,17 @@ export const Search = ({handleSearch}: Props) => {
     const handleInput = (field?: SearchFieldType) => {
         let value
         if (field) {
-            setSearchButton({...initButton, [field]: "primary"})
             value = { field, value: ""}
+            setSearchButton({...initButton, [field]: "primary"})
             setSearchValue('')
         } else {
-            setSearchButton({...initButton, all: "primary"})
             value = { field: null, value: searchValue.trim()}
+            setSearchButton({...initButton, all: "primary"})
         }
         handleSearch(value)
     }
     const handleClear = () => {
         if (searchValue) {
-
             setSearchValue('')
         }
         searchButton.all === "primary" && handleSearch({field: null, value: ""})
@@ -52,7 +52,6 @@ export const Search = ({handleSearch}: Props) => {
                         },
                         Button: {
                             contentFontSize: 16,
-                            // contentLineHeight: 2
                             paddingBlock: 6
                         },
                     },
@@ -74,25 +73,25 @@ export const Search = ({handleSearch}: Props) => {
                     <Space>
                         <Flex gap="large" justify={'space-around'}>
                             <Button type={searchButton.all} shape={'round'}
-                                    style={{width: 130, height: 36}}
+                                    style={currentButtonSize}
                                     onClick={() => handleInput(searchField.ALL)}
                             >
                                 Все
                             </Button>
                             <Button type={searchButton.open} shape={'round'}
-                                    style={{width: 130, height: 36}}
+                                    style={currentButtonSize}
                                     onClick={() => handleInput(searchField.OPEN)}
                             >
                                 Открытые
                             </Button>
                             <Button type={searchButton.close} shape={'round'}
-                                    style={{width: 130, height: 36}}
+                                    style={currentButtonSize}
                                     onClick={() => handleInput(searchField.CLOSE)}
                             >
                                 Закрытые
                             </Button>
                             <Button type={searchButton.await} shape={'round'}
-                                    style={{width: 130, height: 36}}
+                                    style={currentButtonSize}
                                     onClick={() => handleInput(searchField.AWAIT)}
                             >
                                 Ожидают ответа
