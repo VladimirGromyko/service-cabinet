@@ -66,7 +66,7 @@ export const JournalTable: React.FC = ({searchValue}: Props) => {
                 return (
                     <div onClick={(e) => handleRowClick(e, record)}>
                         <a>{record.theme}</a>
-                        {record.description === "Да" && <ExclamationCircleOutlined className={s.exclamation}/>}
+                        {record.waiting === "Да" && <ExclamationCircleOutlined className={s.exclamation}/>}
                     </div>
                 )
             },
@@ -89,26 +89,26 @@ export const JournalTable: React.FC = ({searchValue}: Props) => {
         {
             title: "Дата создания",
             dataIndex: "creationDate",
-            sorter: (a, b) => dateComparison({current: a.creationDate, next: b.creationDate}),
+            sorter: (a, b) => dateComparison({current: a.creationDate, comparable: b.creationDate}),
             sortOrder: sortedInfo?.field === 'creationDate' ? sortedInfo.order : null,
             width: '15%',
         },
         {
             title: "Дата изменения",
             dataIndex: "changeDate",
-            sorter: (a, b) => dateComparison({current: a.changeDate, next: b.changeDate}),
+            sorter: (a, b) => dateComparison({current: a.changeDate, comparable: b.changeDate}),
             sortOrder: sortedInfo?.field === 'changeDate' ? sortedInfo.order : null,
             width: '15%',
         },
         {
             title: "Крайний срок",
             dataIndex: "term",
-            sorter: (a, b) => dateComparison({current: a.term, next: b.term}),
+            sorter: (a, b) => dateComparison({current: a.term, comparable: b.term}),
             sortOrder: sortedInfo?.field === 'term' ? sortedInfo.order : null,
             width: '15%',
         },
         {
-            title: "Статус",
+            title: "Состояние",
             dataIndex: "status",
             sorter: (a, b) => {
                 const ruCollator = new Intl.Collator('ru-RU');
@@ -138,7 +138,7 @@ export const JournalTable: React.FC = ({searchValue}: Props) => {
                     } else if (search.field === searchField.AWAIT && item === "waiting" && el[item] === "Да") {
                         check = true
                     } else if (!search.field && item !== "key") {
-                        check = el[item].includes(search.value)
+                        check = el[item].toLowerCase().includes(search.value.toLowerCase())
                     }
                     if (check) {
                         break

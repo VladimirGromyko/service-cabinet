@@ -1,0 +1,56 @@
+.infoPageWrapper{
+  background: #e2f5f5;
+  height: 100vh;
+}
+
+.infoPageSection{
+  padding: 10px 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.infoPageSpace{
+  display: flex;
+  background: white;
+  padding: 10px;
+  border-radius: 7px;
+  border: #ebebeb solid 1px;
+  .mainInfo{
+    width: 60%;
+    .infoTheme{
+      font-weight: bold;
+      padding: 5px 0 20px 0;
+    }
+  }
+  .extraInfo{
+    width: 40%;
+    .statusImg{
+      display: flex;
+    }
+    .deadline{
+      padding: 5px 0 20px 0;
+    }
+  }
+  .fieldName{
+    font-weight: 400;
+    font-size: 15px;
+    color: #979797;
+  }
+}
+
+.title {
+  font-size: 18px;
+  font-weight: bold;
+}
+.buttonsWrapper{
+  padding: 10px 0;
+}
+
+
+.additionally{
+  background: white;
+  border-radius: 7px;
+  border: #d8d8d8 solid 2px;
+  margin-top: 50px;
+  padding: 10px;
+}

@@ -1,6 +1,7 @@
 export interface UniversalObject<T> {
     [key: string]: T;
 }
+export type ServiceStatus = "В работе" | "Зарегистрировано" | "На согласовании" | "Выполнено" | "Закрыто" | string
 export interface TableData extends UniversalObject<string> {
     name: string
     theme: string
@@ -8,7 +9,7 @@ export interface TableData extends UniversalObject<string> {
     creationDate: string
     changeDate: string
     term: string
-    status: string
+    status: ServiceStatus
     waiting: string
     description: string
     solution: string
