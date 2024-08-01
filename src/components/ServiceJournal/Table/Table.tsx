@@ -32,7 +32,10 @@ interface TableParams {
     filters?: Parameters<GetProp<TableProps, 'onChange'>>[1];
 }
 
-
+const totalPage = (dataVal, size) => {
+    return Math.ceil(dataVal / size)
+}
+const startPageSize = 10;
 export const JournalTable: React.FC = ({searchValue}: Props) => {
     const dispatch = useAppDispatch();
 
@@ -42,8 +45,12 @@ export const JournalTable: React.FC = ({searchValue}: Props) => {
     const [tableParams, setTableParams] = useState<TableParams>(
         {
             pagination: {
+                showLessItems: true,
                 current: 1,
-                pageSize: 10,
+                pageSize: startPageSize,
+                pageSizeOptions: [10, 20, 40, 100],
+                showSizeChanger: true,
+                total: totalPage(newData, startPageSize)
             }
         });
     const [sortedInfo, setSortedInfo] = useState<Sorts>({} as Sorts);
@@ -51,6 +58,7 @@ export const JournalTable: React.FC = ({searchValue}: Props) => {
 
     const handleTableChange: TableProps['onChange'] = (pagination, filters, sorter) => {
         setSortedInfo(sorter as Sorts);
+        setTableParams({pagination: {...pagination}})
     };
     const handleRowClick = (e, rec: TableData) => {
         dispatch(setServiceInfo(rec))
@@ -149,13 +157,22 @@ export const JournalTable: React.FC = ({searchValue}: Props) => {
         }
         setFilter(search)
         setNewData(updateData)
+        setTableParams(
+            {
+                pagination:
+                    {...tableParams.pagination, total: totalPage(newData, tableParams.pagination.pageSize)}
+            })
     }
     useEffect(() => handleFilter(searchValue), [searchValue])
     return (
-        <Table
-            columns={columns}
-            dataSource={newData}
-            onChange={handleTableChange}
-        />
+        <div className={s.tableWrapper}>
+            <Table
+                columns={columns}
+                dataSource={newData}
+                onChange={handleTableChange}
+                pagination={tableParams.pagination}
+            />
+        </div>
+
     );
 };
