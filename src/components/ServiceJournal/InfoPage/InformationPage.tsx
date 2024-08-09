@@ -15,36 +15,6 @@ export const InformationPage = () => {
     const timePassed = dateComparisonValue({
         current: new Date() as string, comparable: longString.term
     });
-
-    // const timePassedString = `
-    // ${timePassed.days
-    //     ? timePassed.days > 4 && timePassed.days < 21
-    //         ? timePassed.days + ' дней '
-    //         : timePassed.days % 10 > 0 && timePassed.days % 10 < 2
-    //             ? timePassed.days + ' день '
-    //             : timePassed.days % 10 > 1 && timePassed.days % 10 < 5
-    //                 ? timePassed.days + ' дня '
-    //                 : timePassed.days + ' дней '
-    //     : ''}
-    // ${timePassed.hours
-    //     ? timePassed.hours > 4 && timePassed.hours < 21
-    //         ? timePassed.hours + ' часов '
-    //         : timePassed.hours % 10 > 0 && timePassed.hours % 10 < 2
-    //             ? timePassed.hours + ' час '
-    //             : timePassed.hours % 10 > 1 && timePassed.hours % 10 < 5
-    //                 ? timePassed.hours % 10 + ' часа '
-    //                 : timePassed.hours + ' часов '
-    //     : ''}
-    // ${timePassed.minutes
-    //     ? timePassed.minutes > 4 && timePassed.minutes < 21
-    //         ? timePassed.minutes + ' минут'
-    //         : timePassed.minutes % 10 > 0 && timePassed.minutes % 10 < 2
-    //             ? timePassed.minutes + ' минута'
-    //             : timePassed.minutes % 10  > 1 && timePassed.minutes % 10 < 5
-    //                 ? timePassed.minutes + ' минуты'
-    //                 : timePassed.minutes + ' минут'
-    //     : ''}
-    // `
     return (
         <div className={s.infoPageWrapper}>
             <JournalHeader/>
