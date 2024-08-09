@@ -18,33 +18,40 @@
   }
 }
 
-.infoPageSpace{
+.infoPageAllSpace{
   display: flex;
+  flex-direction: column;
   background: white;
   padding: 10px;
   border-radius: 7px;
   border: #ebebeb solid 1px;
-  .mainInfo{
-    width: 60%;
-    .infoTheme{
-      font-weight: bold;
-      padding: 5px 0 20px 0;
+
+  .infoPageSpace{
+    display: flex;
+    .mainInfo{
+      width: 60%;
+      .infoTheme{
+        font-weight: bold;
+        padding: 5px 0 20px 0;
+      }
     }
-  }
-  .extraInfo{
-    width: 40%;
-    .statusImg{
-      display: flex;
+    .extraInfo{
+      width: 40%;
+      .statusImg{
+        display: flex;
+      }
+      .deadline{
+        padding: 5px 0 20px 0;
+      }
     }
-    .deadline{
-      padding: 5px 0 20px 0;
-    }
+
   }
-  .fieldName{
-    font-weight: 400;
-    font-size: 15px;
-    color: #979797;
-  }
+}
+
+.fieldName{
+  font-weight: 400;
+  font-size: 15px;
+  color: #979797;
 }
 
 .title {
